@@ -1,30 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [name, setName] = useState('')
     const nevigate = useNavigate()
     const Navigateregister = () => {
         nevigate('/signin')
     }
+
+    const handleemail = (e) => {
+        setEmail(e.target.value)
+
+    }
+
+    const handlename = (e) => {
+        setName(e.target.value)
+    }
+
+    const Handlepass = (e) => {
+        setPassword(e.target.value)
+    }
+
+    const Handleusesignup = (e) => {
+        e.preventDefault()
+        console.log(name, email, password)
+
+    }
     return (
         <div className='container w-50 mx-auto mt-5'>
             <h1>Please register here</h1>
-            <Form>
+            <Form onSubmit={Handleusesignup}>
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="email" placeholder="Enter name" />
+                    <Form.Control onBlur={handlename} type="text" placeholder="Enter name" />
 
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control onBlur={handleemail} type="email" placeholder="Enter email" />
 
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control onBlur={Handlepass} type="password" placeholder="Password" />
                 </Form.Group>
 
                 <Button variant="success" type="submit">
