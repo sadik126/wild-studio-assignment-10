@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Header/Header';
 import Section from '../Section2/Section';
+import Services from '../Service/Services';
 import './Home.css'
 
 
@@ -22,6 +23,8 @@ const Home = () => {
             </div>
 
             <Section></Section>
+
+            <Services></Services>
 
 
 
