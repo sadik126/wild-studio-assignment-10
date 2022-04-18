@@ -3,8 +3,8 @@ import React from 'react';
 const Footer = () => {
     return (
         <div className='container-fluid bg-dark text-light'>
-            <div className="row">
-                <div className="col-md-3">
+            <div className="row d-flex">
+                <div className="col-md-3 text-center">
                     <h5>Follow me</h5>
                     <a href="">Facebook</a><br />
                     <a href="">Linkdin</a><br />
@@ -12,16 +12,16 @@ const Footer = () => {
                     <a href="">Github</a><br />
 
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 text-center">
                     <h5>My address</h5>
                     <p>Mirpur-14,Ibrahimpur,Kamal khan sarak,Dhaka-1206</p>
                     <p>phone:+8801400156406</p>
                     <p>Email:sadikhimel04@gmail.com</p>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 text-center">
                     <h5>Information</h5>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 text-center">
                     <h5>legal</h5>
                 </div>
             </div>
