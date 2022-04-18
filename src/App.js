@@ -6,6 +6,7 @@ import Footer from './Component/Footer/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from 'react-router-dom';
 import Services from './Component/Service/Services';
+import About from './Component/About/About';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/services' element={<Services></Services>}></Route>
+        <Route path='/about' element={<About></About>}></Route>
       </Routes>
 
       <Footer></Footer>

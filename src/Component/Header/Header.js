@@ -1,6 +1,7 @@
 import { Button } from 'bootstrap';
 import React from 'react';
 import { Container, Form, FormControl, InputGroup, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -13,14 +14,14 @@ const Header = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li className="nav-item me-4">
-                            <a className="nav-link active" aria-current="page" href="/">Home</a>
+                            <Link className="nav-link active" aria-current="page" as={Link} to="/">Home</Link>
                         </li>
 
                         <li className="nav-item me-4">
-                            <a className="nav-link" href="/services">Services</a>
+                            <Link className="nav-link" to="/services">Services</Link>
                         </li>
                         <li className="nav-item me-4">
-                            <a className="nav-link" href="#">About</a>
+                            <Link className="nav-link" to="/about">About</Link>
                         </li>
                         <li className="nav-item me-4">
                             <a className="nav-link" href="#">Login</a>
