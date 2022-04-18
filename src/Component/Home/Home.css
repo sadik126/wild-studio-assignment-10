@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Concert+One&family=Dongle:wght@700&family=Encode+Sans:wght@500&family=Montserrat&family=My+Soul&family=Poppins:wght@400;500&family=Roboto+Condensed:wght@700&family=Roboto:wght@100;500&family=Ubuntu:wght@400;500;700&display=swap');
+
+
+
+
+.image {
+    background-image: url("../../../public/Image/pic1.jpg");
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.topdiv h1 {
+    font-family: 'My Soul', cursive;
+    font-size: 48px;
+}
+
+.topdiv {
+    margin-top: 100px;
+}
