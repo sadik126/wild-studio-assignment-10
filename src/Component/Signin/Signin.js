@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../Firebase.init';
 
 const Signin = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const nevigate = useNavigate()
+
+    const location = useLocation()
+
+    let from = location.state?.from?.pathname || "/";
+
+
 
 
     const [
@@ -17,11 +23,15 @@ const Signin = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-
-
     if (user) {
-        nevigate('/')
+        nevigate(from, { replace: true });
     }
+
+
+
+    // if (user) {
+    //     nevigate('/')
+    // }
 
 
     const handleemail = (e) => {

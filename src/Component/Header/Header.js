@@ -1,9 +1,16 @@
 import { Button } from 'bootstrap';
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { Container, Form, FormControl, InputGroup, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../Firebase.init';
 
 const Header = () => {
+    const [user] = useAuthState(auth)
+    const Handlesignout = () => {
+        signOut(auth)
+    }
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
@@ -23,9 +30,16 @@ const Header = () => {
                         <li className="nav-item me-4">
                             <Link className="nav-link" to="/about">About</Link>
                         </li>
-                        <li className="nav-item me-4">
-                            <Link className="nav-link" to="/signin">Login</Link>
-                        </li>
+                        {
+                            user ? <li className="nav-item me-4">
+                                <Link className="nav-link text-danger" onClick={Handlesignout} to="/signin">Logout</Link>
+                            </li>
+                                :
+                                <li className="nav-item me-4">
+                                    <Link className="nav-link text-info" to="/signin">Login</Link>
+                                </li>
+                        }
+
                         <li className="nav-item me-4">
                             <Link className="nav-link" to="/signup">Signup</Link>
                         </li>
