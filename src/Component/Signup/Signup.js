@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../Firebase.init';
 
 const Signup = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
     const nevigate = useNavigate()
     const Navigateregister = () => {
         nevigate('/signin')
@@ -26,8 +34,12 @@ const Signup = () => {
 
     const Handleusesignup = (e) => {
         e.preventDefault()
-        console.log(name, email, password)
+        createUserWithEmailAndPassword(email, password)
 
+    }
+
+    if (user) {
+        nevigate('/')
     }
     return (
         <div className='container w-50 mx-auto mt-5'>

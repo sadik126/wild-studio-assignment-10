@@ -1,11 +1,27 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../Firebase.init';
 
 const Signin = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const nevigate = useNavigate()
+
+
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
+
+
+    if (user) {
+        nevigate('/')
+    }
 
 
     const handleemail = (e) => {
@@ -19,7 +35,7 @@ const Signin = () => {
 
     const Handleusesignin = (e) => {
         e.preventDefault()
-        console.log(email, password)
+        signInWithEmailAndPassword(email, password)
 
     }
 
