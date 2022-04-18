@@ -30,6 +30,9 @@ const Header = () => {
                         <li className="nav-item me-4">
                             <Link className="nav-link" to="/about">About</Link>
                         </li>
+                        <li className="nav-item me-4">
+                            <Link className="nav-link" to="/blog">Blog</Link>
+                        </li>
                         {
                             user ? <li className="nav-item me-4">
                                 <Link className="nav-link text-danger" onClick={Handlesignout} to="/signin">Logout</Link>

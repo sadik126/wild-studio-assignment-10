@@ -13,6 +13,7 @@ import Signin from './Component/Signin/Signin';
 import Signup from './Component/Signup/Signup';
 import Requireauth from './Component/Requireauth/Requireauth';
 import Checkout from './Component/Checkout/Checkout';
+import Blog from './Component/Blog/Blog';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/signin' element={<Signin></Signin>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
+        <Route path='/blog' element={<Blog></Blog>}></Route>
         {/* <Route path='/signout' element={<Signup></Signup>}></Route> */}
         <Route path='/checkout' element={
           <Requireauth>
