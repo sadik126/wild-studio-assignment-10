@@ -6,6 +6,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../Firebase.init';
 import Loading from '../Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signin = () => {
     const [email, setEmail] = useState('')
@@ -75,8 +77,15 @@ const Signin = () => {
     }
 
     const Resetpassword = async () => {
-        await sendPasswordResetEmail(email);
-        alert('Sent email');
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('Sent email');
+
+        }
+        else {
+            toast('please enter your email adress')
+        }
+
     }
     return (
         <div className='container w-50 mx-auto mt-5'>
@@ -102,13 +111,14 @@ const Signin = () => {
                 </Button>
             </Form>
             {errorElement}
-            <p>New to wild studio?</p> <Link to="/signup" className='text-success pe-auto text-decoration-none' onClick={Navigateregister}>Please register</Link>
-            <div className='d-flex p-3 justify-content-center'>
-                <p className='mx-3'>Forget password?</p> <Link to="/signup" className='text-danger pe-auto text-decoration-none' onClick={Resetpassword}>Reset password</Link>
+            <p>New to wild studio?</p> <Link to="/signup" className='text-success pe-auto  text-decoration-none' onClick={Navigateregister}>Please register</Link>
+            <div className='d-flex    justify-content-center'>
+                <p className='mx-3 pt-3 '>Forget password?</p> <Button variant="link" className=' text-danger pe-auto text-decoration-none' onClick={Resetpassword}>Reset password</Button>
 
             </div>
 
             <SocialLogin></SocialLogin>
+            <ToastContainer />
         </div>
     );
 };

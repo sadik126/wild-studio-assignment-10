@@ -3,6 +3,7 @@ import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../Firebase.init';
 import google from '../../Googleimg/google.png'
+import Loading from '../Loading/Loading';
 
 const SocialLogin = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
@@ -18,6 +19,10 @@ const SocialLogin = () => {
 
     if (user) {
         nevigate('/');
+    }
+
+    if (loading) {
+        return <Loading></Loading>
     }
     return (
         <div>

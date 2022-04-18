@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase.init';
+import Loading from '../Loading/Loading';
 
 const Signup = () => {
     const [email, setEmail] = useState('')
@@ -45,6 +46,10 @@ const Signup = () => {
 
     if (user) {
         console.log('user', user)
+    }
+
+    if (loading || updating) {
+        return <Loading></Loading>
     }
     return (
         <div className='container w-50 mx-auto mt-5'>
