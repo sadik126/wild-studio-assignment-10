@@ -7,17 +7,29 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from 'react-router-dom';
 import Services from './Component/Service/Services';
 import About from './Component/About/About';
+import Detail from './Component/Detail/Detail'
+import Notfound from './Component/Notfound/Notfound';
+import Signin from './Component/Signin/Signin';
+import Signup from './Component/Signup/Signup';
 
 function App() {
   return (
     <div >
       <Header></Header>
 
+
       <Routes>
-        <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/' element={<Home />}></Route>
         <Route path='/services' element={<Services></Services>}></Route>
+        <Route path='/services/:serviceID' element={<Detail></Detail>}></Route>
         <Route path='/about' element={<About></About>}></Route>
+        <Route path='/signin' element={<Signin></Signin>}></Route>
+        <Route path='/signup' element={<Signup></Signup>}></Route>
+        <Route path='*' element={<Notfound></Notfound>}></Route>
       </Routes>
+
+
+
 
       <Footer></Footer>
 
