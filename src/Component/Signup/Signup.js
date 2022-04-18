@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase.init';
 
 const Signup = () => {
@@ -13,33 +13,38 @@ const Signup = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+    const [updateProfile, updating] = useUpdateProfile(auth);
     const nevigate = useNavigate()
     const Navigateregister = () => {
         nevigate('/signin')
     }
 
-    const handleemail = (e) => {
+    const handleemail = async (e) => {
         setEmail(e.target.value)
 
     }
 
-    const handlename = (e) => {
+    const handlename = async (e) => {
         setName(e.target.value)
     }
 
-    const Handlepass = (e) => {
+    const Handlepass = async (e) => {
         setPassword(e.target.value)
     }
 
-    const Handleusesignup = (e) => {
+    const Handleusesignup = async (e) => {
         e.preventDefault()
-        createUserWithEmailAndPassword(email, password)
+        await createUserWithEmailAndPassword(email, password)
+        await updateProfile({ displayName: name });
+        console.log('Updated profile');
+        nevigate('/')
 
     }
 
     if (user) {
-        nevigate('/')
+        console.log('user', user)
     }
     return (
         <div className='container w-50 mx-auto mt-5'>

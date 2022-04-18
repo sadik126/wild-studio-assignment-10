@@ -1,8 +1,10 @@
+import { async } from '@firebase/util';
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../Firebase.init';
+import Loading from '../Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Signin = () => {
@@ -26,8 +28,16 @@ const Signin = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(
+        auth
+    );
+
     if (user) {
         nevigate(from, { replace: true });
+    }
+
+    if (loading) {
+        return <Loading></Loading>
     }
 
     if (error) {
@@ -64,8 +74,9 @@ const Signin = () => {
         nevigate('/signup')
     }
 
-    const Resetpassword = () => {
-
+    const Resetpassword = async () => {
+        await sendPasswordResetEmail(email);
+        alert('Sent email');
     }
     return (
         <div className='container w-50 mx-auto mt-5'>
@@ -91,7 +102,7 @@ const Signin = () => {
                 </Button>
             </Form>
             {errorElement}
-            <p>New to wild studio?</p> <Link to="/signup" className='text-danger pe-auto text-decoration-none' onClick={Navigateregister}>Please register</Link>
+            <p>New to wild studio?</p> <Link to="/signup" className='text-success pe-auto text-decoration-none' onClick={Navigateregister}>Please register</Link>
             <div className='d-flex p-3 justify-content-center'>
                 <p className='mx-3'>Forget password?</p> <Link to="/signup" className='text-danger pe-auto text-decoration-none' onClick={Resetpassword}>Reset password</Link>
 
