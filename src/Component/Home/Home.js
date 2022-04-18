@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Section from '../Section2/Section';
 import Services from '../Service/Services';
@@ -8,6 +9,7 @@ import './Home.css'
 const Home = () => {
     return (
         <div>
+
 
             <div className="container-fluid image">
                 <div className="row d-flex justify-content-center  ">
@@ -25,6 +27,8 @@ const Home = () => {
             <Section></Section>
 
             <Services></Services>
+
+
 
 
 
