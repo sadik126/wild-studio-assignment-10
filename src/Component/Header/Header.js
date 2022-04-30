@@ -33,6 +33,13 @@ const Header = () => {
                         <li className="nav-item me-4">
                             <Link className="nav-link" to="/blog">Blog</Link>
                         </li>
+
+                        {
+                            user && <>
+                                <Link className="nav-link" to="/addservice">Add service</Link>
+                                <Link className="nav-link" to="/manageservice">Manage service</Link>
+                            </>
+                        }
                         {
                             user ? <li className="nav-item me-4">
                                 <Link className="nav-link text-danger" onClick={Handlesignout} to="/signin">Logout</Link>
@@ -56,6 +63,8 @@ const Header = () => {
                                     <Link className="nav-link" to="/signup">Signup</Link>
                                 </li>
                         }
+
+
 
 
 

@@ -3,7 +3,7 @@ import { Button, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const Service = (props) => {
-    const { id, name, price, img, description } = props.service;
+    const { _id, name, price, img, description } = props.service;
     const nevigate = useNavigate();
 
     const nevigatedetail = (id) => {
@@ -19,7 +19,7 @@ const Service = (props) => {
                         {description.slice(0, 150)}
                     </Card.Text>
                     <h4 className='text-danger fw-bold'>Price :{price}৳</h4>
-                    <Button variant="primary" onClick={() => nevigatedetail(id)}>Show detail</Button>
+                    <Button variant="primary" onClick={() => nevigatedetail(_id)}>Show detail</Button>
                 </Card.Body>
             </Card>
 

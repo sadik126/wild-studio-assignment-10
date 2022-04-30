@@ -14,6 +14,8 @@ import Signup from './Component/Signup/Signup';
 import Requireauth from './Component/Requireauth/Requireauth';
 import Checkout from './Component/Checkout/Checkout';
 import Blog from './Component/Blog/Blog';
+import Addservice from './Component/Addservice/Addservice';
+import Manageservice from './Component/Manageservice/Manageservice';
 
 function App() {
   return (
@@ -33,6 +35,18 @@ function App() {
         <Route path='/checkout' element={
           <Requireauth>
             <Checkout></Checkout>
+          </Requireauth>
+        }></Route>
+
+        <Route path='/addservice' element={
+          <Requireauth>
+            <Addservice></Addservice>
+          </Requireauth>
+        }></Route>
+
+        <Route path='/manageservice' element={
+          <Requireauth>
+            <Manageservice></Manageservice>
           </Requireauth>
         }></Route>
         <Route path='*' element={<Notfound></Notfound>}></Route>
